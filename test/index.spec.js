@@ -1,7 +1,17 @@
-var Browser = require('zombie');
-var browser = new Browser();
+'use strict';
+const path = require('path');
+const Browser = require('zombie');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const server = 'http://localhost:7777';
+const PORT = 7777;
+const app = express();
+const browser = new Browser();
+const server = `http://localhost:${PORT}/`;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../../../')));
+app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
 
 describe('Well of HTML', function(){
 
