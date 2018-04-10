@@ -10,7 +10,7 @@ const browser = new Browser();
 const server = `http://localhost:${PORT}/`;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../../../')));
+app.use(express.static(path.join(__dirname, '../')));
 app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
 
 describe('Well of HTML', function(){
