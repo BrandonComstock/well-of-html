@@ -11,4 +11,4 @@ install:
 script:
   - yarn run travis
 notifications:
-  webhooks: https://44999c08.ngrok.io/api/v2/webhooks/travisci
+  webhooks: https://greenlight.operationspark.org/api/v2/webhooks/travisci
