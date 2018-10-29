@@ -5,18 +5,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const PORT = 7777;
-const app = express();
+const url = `http://localhost:${PORT}/`;
 const browser = new Browser();
-const server = `http://localhost:${PORT}/`;
+const app = express();
+const server = app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../')));
-app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
 
 describe('Well of HTML', function(){
 
+  after(done => server.close(done));
+
   beforeEach(function(done) {
-    browser.visit(server, done);
+    browser.visit(url, done);
   });
 
   it('should have a title A Well of HTML', function(done){
